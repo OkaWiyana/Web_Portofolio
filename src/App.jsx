@@ -1,7 +1,19 @@
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+
+import Homepage from "./pages/homepage";
+
 function App() {
   return (
     <div>
-      <h1 className="text-4xl text-red-500 font-bold">Hai Dunia</h1>
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Content */}
+      <Homepage />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

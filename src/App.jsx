@@ -1,20 +1,26 @@
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
-
-import Homepage from "./pages/homepage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Homepage from "./pages/Homepage";
+// import KeystaticPage from "./pages/KeystaticPage";
 
 function App() {
   return (
-    <div>
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Content */}
-      <Homepage />
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <Homepage />
+              <Footer />
+            </>
+          }
+        />
+        {/* <Route path="/keystatic/*" element={<KeystaticPage />} /> */}
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,11 +1,11 @@
 {
   "heroText": "Web Developer & UI/UX Designer",
   "roles": [
+    "Software Engineer",
     "Web Developer",
     "UI/UX Designer",
     "Front End Developer",
-    "Back End Developer",
-    "Quality Assurance"
+    "Back End Developer"
   ],
   "heroImage": "Oka Profile.png",
   "aboutImage": "About Oka.png"

@@ -92,7 +92,7 @@ const Homepage = () => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="https://drive.usercontent.google.com/download?id=1XIAy6f27HtWDtohnoeM0c0aP7VtJRRTu&export=download&authuser=0&confirm=t&uuid=7043d32d-20c3-48d6-9671-1dedae158cf8&at=AN_67v3SZCPO06MaT2aGW9HiucKY:1730121135883"
+              href="https://drive.usercontent.google.com/download?id=1quUTnVrP5ZnARH7a76vrPfSvfQUM2s3I"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white font-semibold py-3 px-8 rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all duration-300"
             >
               Download CV <i className="ri-download-2-line"></i>
@@ -155,12 +155,14 @@ const Homepage = () => {
               Tentang <span className="text-gradient">Saya</span>
             </h2>
             <p className="text-slate-700 dark:text-white/70 text-lg leading-relaxed mb-6 text-justify">
-              Saya adalah mahasiswa di Politeknik Negeri Bali, jurusan Teknologi
-              Informasi, program studi Teknologi Rekayasa Perangkat Lunak, saat
-              ini saya sedang menempuh semester 5. Saya memiliki minat yang
-              mendalam di bidang desain UI/UX dan pengembangan website, di mana
-              saya berusaha menggabungkan estetika dan fungsionalitas dalam
-              setiap proyek.
+              Saya merupakan lulusan Sarjana Terapan Teknologi Rekayasa
+              Perangkat Lunak dari Politeknik Negeri Bali. Saya memiliki minat
+              yang kuat dalam pengembangan website, desain UI/UX, dan teknologi
+              berbasis AI. Saya berfokus pada pengembangan aplikasi yang
+              mengutamakan pengalaman pengguna, fungsionalitas, serta performa
+              yang optimal. Saya senang mempelajari teknologi baru dan terus
+              mengembangkan kemampuan untuk menciptakan solusi digital yang
+              bermanfaat.
             </p>
             <div className="flex gap-4 mt-8">
               {[
@@ -364,7 +366,7 @@ const Homepage = () => {
             <form className="space-y-6">
               <div>
                 <label className="block text-slate-700 dark:text-white/80 mb-2 text-sm font-medium">
-                  Nama Lengkap
+                  Nama
                 </label>
                 <input
                   type="text"

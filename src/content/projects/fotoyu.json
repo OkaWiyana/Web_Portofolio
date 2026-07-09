@@ -1,6 +1,8 @@
 {
+  "slug": "fotoyu-auto",
   "title": "FotoYuAuto",
-  "description": "Aplikasi yang membantu fotografer sport fotoyu dalam mengupload ribuan foto sekaligus dengan aja 1 kali konfigurasi tanpa menekan dan mengisi form secara manual",
+  "description": "FotoYuAuto Uploader merrupakan Aplikasi desktop berbasis Python untuk otomatisasi proses unggah (upload) foto ke platform Fotoyu secara massal. Aplikasi ini dibuat dengan antarmuka grafis (GUI) yang memudahkan pengguna untuk mengelola antrean foto, login secara otomatis, dan menjalankan proses upload secara paralel menggunakan otomatisasi browser. \n  \n Aplikasi yang membantu fotografer sport fotoyu dalam mengupload ribuan foto sekaligus dengan hanya 1 kali konfigurasi tanpa menekan dan mengisi form secara manual. ",
   "image": "fotoyu auto.png",
+  "github": "https://github.com/OkaWiyana/ai_worker_fg_upload",
   "link": "https://github.com/OkaWiyana/ai_worker_fg_upload"
 }

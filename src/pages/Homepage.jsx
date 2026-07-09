@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import { Link } from "react-router-dom";
 
 // CMS Data Imports
 // CMS Data Imports
@@ -87,7 +88,7 @@ const Homepage = () => {
               )}
             </h3>
             <p className="text-base md:text-lg text-slate-600 dark:text-white/60 mb-8 max-w-lg leading-relaxed">
-              {homeData.heroText || "Web Developer & UI/UX Designer"}
+              {homeData.heroText || "Web Developer & Graphic Designer"}
             </p>
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -213,13 +214,13 @@ const Homepage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+            className="flex flex-wrap justify-center gap-6"
           >
             {skillsData.map((skill, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="glass-card p-4 rounded-xl flex items-center gap-4 hover:scale-105 transition-transform"
+                className="glass-card p-4 rounded-xl flex items-center gap-4 hover:scale-105 transition-transform w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] lg:w-[calc(20%-20px)]"
               >
                 <img
                   src={`/images/skills/${skill.icon}`}
@@ -319,30 +320,38 @@ const Homepage = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
-                  className="group relative overflow-hidden rounded-2xl glass"
                 >
-                  <div className="relative h-64 overflow-hidden">
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                      <span className="text-white font-semibold border border-white px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                        View Project
-                      </span>
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className="group relative overflow-hidden rounded-2xl glass block"
+                  >
+                    <div className="relative h-64 overflow-hidden">
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <span className="text-white font-semibold border border-white px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform flex items-center gap-2">
+                          <i className="ri-eye-line"></i> View Project
+                        </span>
+                      </div>
+                      {project.image && (
+                        <img
+                          src={`/images/projects/${project.image}`}
+                          alt={project.title}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        />
+                      )}
                     </div>
-                    {project.image && (
-                      <img
-                        src={`/images/projects/${project.image}`}
-                        alt={project.title}
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                      />
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-slate-600 dark:text-white/60 text-sm line-clamp-3">
-                      {project.description}
-                    </p>
-                  </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-white/60 text-sm line-clamp-3">
+                        {project.description}
+                      </p>
+                      <div className="mt-4 flex items-center gap-1 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span>Baca selengkapnya</span>
+                        <i className="ri-arrow-right-line"></i>
+                      </div>
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>

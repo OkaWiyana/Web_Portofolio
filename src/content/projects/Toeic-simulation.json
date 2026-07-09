@@ -1,6 +1,8 @@
 {
-  "title": "TOEIC PREP SIMULATION",
+  "slug": "toeic-simulation",
+  "title": "TOEIC Prep Simulation",
   "description": "Platform simulasi tes TOEIC khusunya untuk mahasiswa Politeknik Negeri Bali yang membantu mahasiswa dalam berlatih menjawab test TOEIC dengan fitur selfstudy dan try out",
   "image": "project 2.png",
+  "github": "#",
   "link": "#"
 }

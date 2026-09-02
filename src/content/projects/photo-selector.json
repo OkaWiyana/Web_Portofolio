@@ -1,0 +1,8 @@
+{
+  "slug": "photo-selector",
+  "title": "Photo Selector",
+  "description": "Photo Selector merupakan sebuah website yang dibangun dengan tujuan untuk memudahkan fotografer dan client dalam melakukan pemilihan foto, dimana client dapat memilih foto yang diinginkan untuk di edit lebih lanjut oleh fotografer tanpa perlu mencatat secara manual ataupun melakukan captur dan mengirimkan ke photografer satu per satu, dengan adanya web ini tentu meringankan pekerjaan fotografer dan client dalam melakukan pemilihan foto. \n website ini terhubung langsung dengan google drive dimana, cara kerja website ini adalah, fotografer mengupload link google drive pada website dan menyantumkan jumlah limit foto yang dapat dipilih oleh client, dan mencantumkan nomor whatsapp untuk dikirim nama file yang ingin di edit.",
+  "image": "photo-selector.png",
+  "github": "https://github.com/OkaWiyana/photo-selector",
+  "link": "https://github.com/OkaWiyana/photo-selector"
+}

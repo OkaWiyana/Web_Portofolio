@@ -41,12 +41,12 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Beranda", href: "#home" },
-    { name: "Tentang Saya", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Layanan", href: "#services" },
-    { name: "Project", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Beranda", href: "/#home" },
+    { name: "Tentang Saya", href: "/#about" },
+    { name: "Skills", href: "/#skills" },
+    { name: "Layanan", href: "/#services" },
+    { name: "Project", href: "/#projects" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (

@@ -1,6 +1,8 @@
 {
-  "title": "TOEIC PREP SIMULATION",
-  "description": "Platform simulasi tes TOEIC khusunya untuk mahasiswa Politeknik Negeri Bali yang membantu mahasiswa dalam berlatih menjawab test TOEIC dengan fitur selfstudy dan try out",
-  "image": "project 2.png",
+  "slug": "toeic-simulation",
+  "title": "TOEIC Prep Simulation",
+  "description": "TOEIC Prep Simulation merupakan sebuah platform simulasi tes TOEIC yang dibuat khusunya untuk mahasiswa Politeknik Negeri Bali, website ini dibangun dengan tujuan untuk membantu mahasiswa dalam berlatih menjawab test TOEIC sebelum mengikuti tes yang sebenarnya, dengan fitur selfstudy dan try out mahasiswa dapat berlatih menjawab soal TOEIC sesuai dengan struktur aslinya, selain itu fitur ini juga dapat membantu mahasiswa dalam mengevaluasi kemampuannya dalam menjawab soal TOEIC dan memberikan rekomendasi untuk meningkatkannya.",
+  "image": "toeic.png",
+  "github": "#",
   "link": "#"
 }

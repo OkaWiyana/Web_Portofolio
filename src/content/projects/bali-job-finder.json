@@ -1,6 +1,8 @@
 {
+  "slug": "bali-job-finder",
   "title": "Bali Job Finder",
-  "description": "Platform pencarian kerja yang menghubungkan pelamar dengan perusahaan di Bali.",
+  "description": "Bali Job Finder merupakan sebuah platform yang dibangun untuk membantu para pencari kerja mempermudah dalam mendapatkan informasi lowongan kerja secara online, website ini menghubungkan antara pencari kerja dengan beberapa perusahaan yang ada di Bali. \n \n Website ini memiliki beberapa fitur diantaranya : \n - Pencarian lowongan kerja \n - Filter lowongan kerja berdasarkan kategori, lokasi, dan tanggal \n - Detail lowongan kerja \n - Apply lowongan kerja \n - Dashboard pencari kerja \n - Dashboard perusahaan \n - Upload CV dan resume \n",
   "image": "project 1.png",
+  "github": "#",
   "link": "#"
 }

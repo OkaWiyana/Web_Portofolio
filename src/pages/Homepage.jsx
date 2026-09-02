@@ -1,15 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import { Link } from "react-router-dom";
 
 // CMS Data Imports
-// CMS Data Imports
 import homeData from "../content/home/index.json";
-// const homeData = {
-//   heroText: "Test",
-//   roles: ["Test"],
-//   heroImage: "",
-//   aboutImage: "",
-// };
 
 // Import all project and skill JSONs
 const projectModules = import.meta.glob("../content/projects/*.json", {
@@ -25,6 +20,66 @@ const skillModules = import.meta.glob("../content/skills/*.json", {
 const skillsData = Object.values(skillModules).map((mod) => mod.default || mod);
 
 const Homepage = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus("error");
+      setErrorMessage("Mohon lengkapi semua kolom inputan.");
+      return;
+    }
+
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const targetEmail =
+        import.meta.env.VITE_CONTACT_EMAIL ||
+        homeData.email ||
+        "gungwiyana@gmail.com";
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Pesan Baru dari Portfolio: ${formData.name}`,
+          _template: "table",
+        }),
+      });
+
+      const result = await response.json();
+      if (response.ok && result.success !== "false") {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+        setErrorMessage(
+          result.message || "Gagal mengirim pesan. Silakan coba lagi."
+        );
+      }
+    } catch (err) {
+      console.error("Error submitting contact form:", err);
+      setStatus("error");
+      setErrorMessage("Terjadi kesalahan koneksi. Silakan coba lagi nanti.");
+    }
+  };
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -87,7 +142,7 @@ const Homepage = () => {
               )}
             </h3>
             <p className="text-base md:text-lg text-slate-600 dark:text-white/60 mb-8 max-w-lg leading-relaxed">
-              {homeData.heroText || "Web Developer & UI/UX Designer"}
+              {homeData.heroText || "Web Developer & Graphic Designer"}
             </p>
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -213,13 +268,13 @@ const Homepage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+            className="flex flex-wrap justify-center gap-6"
           >
             {skillsData.map((skill, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="glass-card p-4 rounded-xl flex items-center gap-4 hover:scale-105 transition-transform"
+                className="glass-card p-4 rounded-xl flex items-center gap-4 hover:scale-105 transition-transform w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] lg:w-[calc(20%-20px)]"
               >
                 <img
                   src={`/images/skills/${skill.icon}`}
@@ -311,7 +366,7 @@ const Homepage = () => {
           </motion.div>
 
           {projectsData.length > 0 ? (
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="flex flex-wrap justify-center gap-8">
               {projectsData.map((project, index) => (
                 <motion.div
                   key={index}
@@ -319,30 +374,39 @@ const Homepage = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
-                  className="group relative overflow-hidden rounded-2xl glass"
+                  className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)]"
                 >
-                  <div className="relative h-64 overflow-hidden">
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                      <span className="text-white font-semibold border border-white px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                        View Project
-                      </span>
+                  <Link
+                    to={`/projects/${project.slug}`}
+                    className="group relative overflow-hidden rounded-2xl glass block"
+                  >
+                    <div className="relative h-64 overflow-hidden">
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                        <span className="text-white font-semibold border border-white px-4 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform flex items-center gap-2">
+                          <i className="ri-eye-line"></i> View Project
+                        </span>
+                      </div>
+                      {project.image && (
+                        <img
+                          src={`/images/projects/${project.image}`}
+                          alt={project.title}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        />
+                      )}
                     </div>
-                    {project.image && (
-                      <img
-                        src={`/images/projects/${project.image}`}
-                        alt={project.title}
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                      />
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-slate-600 dark:text-white/60 text-sm line-clamp-3">
-                      {project.description}
-                    </p>
-                  </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-white/60 text-sm line-clamp-3">
+                        {project.description}
+                      </p>
+                      <div className="mt-4 flex items-center gap-1 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span>Baca selengkapnya</span>
+                        <i className="ri-arrow-right-line"></i>
+                      </div>
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -363,13 +427,39 @@ const Homepage = () => {
             <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-8">
               Hubungi <span className="text-gradient">Saya</span>
             </h2>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {status === "success" && (
+                <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-600 dark:text-green-400 text-sm flex items-center gap-3">
+                  <i className="ri-checkbox-circle-line text-2xl flex-shrink-0"></i>
+                  <div>
+                    <p className="font-semibold">Pesan Berhasil Terkirim!</p>
+                    <p className="text-xs opacity-90">
+                      Terima kasih telah menghubungi saya. Pesan Anda telah berhasil dikirim ke email.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm flex items-center gap-3">
+                  <i className="ri-error-warning-line text-2xl flex-shrink-0"></i>
+                  <div>
+                    <p className="font-semibold">Gagal Mengirim Pesan</p>
+                    <p className="text-xs opacity-90">{errorMessage}</p>
+                  </div>
+                </div>
+              )}
+
               <div>
                 <label className="block text-slate-700 dark:text-white/80 mb-2 text-sm font-medium">
                   Nama
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   className="w-full bg-gray-50 dark:bg-dark/50 border border-gray-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-primary transition-colors"
                   placeholder="Masukkan nama anda"
                 />
@@ -380,6 +470,10 @@ const Homepage = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   className="w-full bg-gray-50 dark:bg-dark/50 border border-gray-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-primary transition-colors"
                   placeholder="email@example.com"
                 />
@@ -389,12 +483,30 @@ const Homepage = () => {
                   Pesan
                 </label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   className="w-full bg-gray-50 dark:bg-dark/50 border border-gray-300 dark:border-white/10 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:border-primary transition-colors h-32 resize-none"
                   placeholder="Tulis pesan anda disini..."
                 ></textarea>
               </div>
-              <button className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-1 transition-all duration-300">
-                Kirim Pesan
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {status === "loading" ? (
+                  <>
+                    <i className="ri-loader-4-line animate-spin text-xl"></i>
+                    <span>Mengirim...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Kirim Pesan</span>
+                    <i className="ri-send-plane-fill"></i>
+                  </>
+                )}
               </button>
             </form>
           </motion.div>

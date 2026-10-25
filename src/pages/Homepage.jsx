@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 // CMS Data Imports
 import homeData from "../content/home/index.json";
@@ -27,6 +28,10 @@ const Homepage = () => {
   });
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const turnstileRef = useRef(null);
+  const turnstileSiteKey = import.meta.env.VITE_CLOUDFLARE_TURNSTILE_SITE_KEY;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,9 +40,22 @@ const Homepage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (honeypot) {
+      // Bot trapped by honeypot
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      return;
+    }
+
     if (!formData.name || !formData.email || !formData.message) {
       setStatus("error");
       setErrorMessage("Mohon lengkapi semua kolom inputan.");
+      return;
+    }
+
+    if (turnstileSiteKey && !turnstileToken) {
+      setStatus("error");
+      setErrorMessage("Harap selesaikan verifikasi keamanan terlebih dahulu.");
       return;
     }
 
@@ -49,29 +67,35 @@ const Homepage = () => {
         import.meta.env.VITE_CONTACT_EMAIL ||
         homeData.email ||
         "gungwiyana@gmail.com";
-      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${targetEmail}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            _honey: honeypot,
+            _subject: `Pesan Baru dari Portfolio: ${formData.name}`,
+            _template: "table",
+          }),
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _subject: `Pesan Baru dari Portfolio: ${formData.name}`,
-          _template: "table",
-        }),
-      });
+      );
 
       const result = await response.json();
       if (response.ok && result.success !== "false") {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });
+        setTurnstileToken("");
+        turnstileRef.current?.reset();
       } else {
         setStatus("error");
         setErrorMessage(
-          result.message || "Gagal mengirim pesan. Silakan coba lagi."
+          result.message || "Gagal mengirim pesan. Silakan coba lagi.",
         );
       }
     } catch (err) {
@@ -123,7 +147,7 @@ const Homepage = () => {
             className="md:w-1/2 text-center md:text-left z-10"
           >
             <h1 className="text-lg md:text-xl font-semibold text-primary mb-2">
-              Halo Semua, Saya
+              Hello Everyone, I'm
             </h1>
             <h2 className="text-4xl md:text-6xl font-bold mb-4 text-slate-900 dark:text-white leading-tight">
               I Gusti Lanang <br />
@@ -142,7 +166,8 @@ const Homepage = () => {
               )}
             </h3>
             <p className="text-base md:text-lg text-slate-600 dark:text-white/60 mb-8 max-w-lg leading-relaxed">
-              {homeData.heroText || "Web Developer & Graphic Designer"}
+              {homeData.heroText ||
+                "Bridging technology, design, and visual arts to create impactful digital products"}
             </p>
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -299,7 +324,7 @@ const Homepage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
-              Layanan <span className="text-gradient">Kami</span>
+              What I <span className="text-gradient">Do</span>
             </h2>
             <p className="text-slate-600 dark:text-white/60">
               Solusi digital terbaik untuk kebutuhan Anda
@@ -434,7 +459,8 @@ const Homepage = () => {
                   <div>
                     <p className="font-semibold">Pesan Berhasil Terkirim!</p>
                     <p className="text-xs opacity-90">
-                      Terima kasih telah menghubungi saya. Pesan Anda telah berhasil dikirim ke email.
+                      Terima kasih telah menghubungi saya. Pesan Anda telah
+                      berhasil dikirim ke email.
                     </p>
                   </div>
                 </div>
@@ -491,9 +517,40 @@ const Homepage = () => {
                   placeholder="Tulis pesan anda disini..."
                 ></textarea>
               </div>
+
+              {/* Honeypot Field (Tersembunyi dari manusia untuk menjebak bot spam) */}
+              <input
+                type="text"
+                name="_honey"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                style={{ display: "none" }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
+              {/* Cloudflare Turnstile */}
+              {turnstileSiteKey && (
+                <div className="flex justify-center my-2">
+                  <Turnstile
+                    ref={turnstileRef}
+                    siteKey={turnstileSiteKey}
+                    onSuccess={(token) => setTurnstileToken(token)}
+                    onExpire={() => setTurnstileToken("")}
+                    onError={() => setTurnstileToken("")}
+                    options={{
+                      theme: "auto",
+                    }}
+                  />
+                </div>
+              )}
+
               <button
                 type="submit"
-                disabled={status === "loading"}
+                disabled={
+                  status === "loading" ||
+                  (Boolean(turnstileSiteKey) && !turnstileToken)
+                }
                 className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 hover:shadow-primary/50 transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {status === "loading" ? (

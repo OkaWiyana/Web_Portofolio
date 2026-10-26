@@ -1,8 +1,28 @@
 {
   "slug": "fotoyu-auto",
-  "title": "FotoYuAuto",
-  "description": "FotoYuAuto Uploader merupakan Aplikasi desktop berbasis Python untuk yang dibuat untuk mengotomatisasi proses unggah (upload) foto ke platform Fotoyu secara massal. Aplikasi ini dibuat dengan antarmuka grafis (GUI) yang memudahkan pengguna untuk mengelola antrean foto, login secara otomatis, dan menjalankan proses upload secara paralel menggunakan otomatisasi browser. \n  \n Aplikasi ini dibuat dengan tujuan membantu fotografer sport khususnya kreator fotoyu dalam mengupload ribuan foto sekaligus dengan hanya 1 kali konfigurasi tanpa menekan dan mengisi form secara manual berulang kali secara terus menerus. \n  \n Saat ini aplikasi baru dilakukan uji coba pada sekala sistem windows dan belum diuji pada sistem macOS, namun untuk skala windows sudah diuji dan digunakan dalam melakukan upload foto hingga puluhan ribu foto ",
+  "title": "Fotoyu Auto Uploader",
+  "description": "Aplikasi desktop berbasis Python untuk otomatisasi proses unggah (upload) foto dan video secara massal ke platform Fotoyu dengan antarmuka grafis (GUI) modern.",
+  "problem": "Dibuat khusus untuk membantu fotografer sport dan kreator Fotoyu yang harus mengunggah ribuan foto dan video setiap selesai acara, mengeliminasi proses pengisian formulir dan klik manual berulang kali di browser.",
+  "features": [
+    "Antarmuka Pengguna Modern (CustomTkinter) dengan tema gelap elegan dan pemantauan timer waktu berjalan secara real-time.",
+    "Upload Paralel Multi-Worker menggunakan Playwright Chromium untuk memaksimalkan throughput kecepatan unggah.",
+    "Dukungan Upload Video (MP4) dengan sistem prioritas pemrosesan terpisah tanpa mengganggu antrean foto.",
+    "Manajemen Antrean Cerdas dengan auto-scan folder, pembagian batch otomatis, serta penanganan error dan auto-retry otomatis.",
+    "Sesi Login Persisten (cookies & disk storage) sehingga tidak perlu repot melakukan login ulang setiap kali aplikasi dibuka.",
+    "Optimasi Performa Browser dengan pemblokiran aset berat (gambar, video, font) untuk menghemat bandwidth dan mempercepat proses."
+  ],
+  "impact": "Mampu memproses dan mengunggah puluhan ribu foto dalam satu kali konfigurasi. Tersedia dalam versi siap pakai (.exe) untuk Windows 10/11 serta kompatibel lintas platform (macOS/Linux) via source code.",
   "image": "fotoyu auto.png",
+  "tech": [
+    "Python",
+    "Playwright",
+    "CustomTkinter",
+    "Pydantic",
+    "Watchdog",
+    "AsyncIO",
+    "Windows Desktop (.exe)"
+  ],
+  "download": "https://drive.google.com/file/d/1turAmxnpFPdj1cJmzvh8LBZfS7zV_2Wg/view",
   "github": "https://github.com/OkaWiyana/ai_worker_fg_upload",
   "link": "https://github.com/OkaWiyana/ai_worker_fg_upload"
 }

@@ -12,27 +12,27 @@
 
   /* Dark Mode Override */
   .dark body {
-    @apply bg-slate-900 text-white;
+    @apply bg-slate-950 text-slate-100;
   }
 }
 
 @layer utilities {
   .glass {
-    /* Light Mode Glass */
-    @apply bg-white/30 backdrop-blur-lg border border-white/20 shadow-sm;
+    /* Navbar translucent surface */
+    @apply bg-white/80 backdrop-blur-md border border-slate-200/80 shadow-sm;
   }
 
   .dark .glass {
-    /* Dark Mode Glass */
-    @apply bg-white/10 border-white/10 shadow-none;
+    @apply bg-slate-900/80 backdrop-blur-md border-slate-800 shadow-none;
   }
 
   .glass-card {
-    @apply bg-white/50 backdrop-blur-md border border-gray-200 transition-all duration-300 hover:shadow-xl;
+    /* Crisp solid surface for cards */
+    @apply bg-white border border-slate-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/40;
   }
 
   .dark .glass-card {
-    @apply bg-slate-800/50 border-white/10 hover:border-primary/50 hover:shadow-primary/20;
+    @apply bg-slate-900/90 border-slate-800 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5;
   }
 
   .text-gradient {

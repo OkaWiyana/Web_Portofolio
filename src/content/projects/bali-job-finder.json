@@ -1,8 +1,27 @@
 {
   "slug": "bali-job-finder",
-  "title": "Bali Job Finder",
-  "description": "Bali Job Finder merupakan sebuah platform yang dibangun untuk membantu para pencari kerja mempermudah dalam mendapatkan informasi lowongan kerja secara online, website ini menghubungkan antara pencari kerja dengan beberapa perusahaan yang ada di Bali. \n \n Website ini memiliki beberapa fitur diantaranya : \n - Pencarian lowongan kerja \n - Filter lowongan kerja berdasarkan kategori, lokasi, dan tanggal \n - Detail lowongan kerja \n - Apply lowongan kerja \n - Dashboard pencari kerja \n - Dashboard perusahaan \n - Upload CV dan resume \n",
+  "title": "Bali Job Finder (E-Recruitment Portal)",
+  "description": "Platform web pencarian kerja dan rekrutmen terpadu berbasis kawasan Bali yang menghubungkan pencari kerja lokal dengan perusahaan terverifikasi, dilengkapi sistem pelacakan lamaran (ATS), filter geolokasi kabupaten/kota, serta generator CV digital otomatis.",
+  "problem": "Pencarian lowongan kerja di kawasan Bali sering kali tersebar di berbagai kanal media sosial informal dan grup pesan instan tanpa standar informasi yang jelas, rentan terhadap penipuan (scam), serta menyulitkan pelamar dalam memantau status lamarannya. Di sisi pelaku usaha dan industri pariwisata/kreatif di Bali, menyaring ratusan pesan lamaran masuk secara manual melalui email atau WhatsApp memakan waktu dan menyulitkan pengorganisasian berkas kandidat.",
+  "features": [
+    "Multi-Filter Job Discovery: Fitur pencarian lowongan kerja dengan filter spesifik berdasarkan kategori industri, lokasi kabupaten/kota di Bali (Denpasar, Badung, Gianyar, dll.), tipe pekerjaan (Full-time, Part-time, Magang), dan batas waktu pendaftaran.",
+    "Applicant Tracking System (ATS Dashboard): Dashboard interaktif bagi perusahaan untuk meninjau berkas lamaran masuk, melihat profil kandidat, dan memperbarui status tahapan seleksi secara transparan (Menunggu, Review, Diterima, Ditolak).",
+    "Automated CV & Resume Builder (DOMPDF): Fitur pembuatan Curriculum Vitae (CV) digital terstandar yang di-generate otomatis dari data profil, pendidikan, dan pengalaman kerja pelamar ke format PDF siap unduh.",
+    "Verified Company System: Mekanisme kurasi dan verifikasi legalitas profil perusahaan oleh Administrator sebelum dapat mempublikasikan lowongan guna meminimalisir risiko penipuan lowongan kerja fiktif.",
+    "Dual-Role Portal (Jobseeker & Employer): Hak akses khusus dengan antarmuka yang disesuaikan; Pelamar dapat melacak riwayat lamaran dan menyimpan lowongan favorit, sementara Perusahaan dapat mengelola lowongan aktif dan database pelamar.",
+    "Direct Online Application: Kemudahan mengajukan lamaran kerja secara instan dengan satu klik menggunakan CV tersimpan atau berkas pendukung baru tanpa perlu membuka aplikasi email terpisah."
+  ],
+  "impact": "Memusatkan ekosistem rekrutmen kerja lokal di Bali, menghubungkan pencari kerja dengan puluhan perusahaan kredibel terverifikasi, memangkas proses screening lamaran kerja manual, serta memberikan kepastian transparansi status seleksi bagi para talenta kerja.",
   "image": "project 1.png",
-  "github": "#",
-  "link": "#"
+  "tech": [
+    "CodeIgniter 3",
+    "PHP",
+    "MySQL",
+    "Bootstrap",
+    "JavaScript",
+    "DOMPDF",
+    "SweetAlert"
+  ],
+  "github": "https://github.com/CalvinCandra/BaliJobFinder",
+  "link": "https://github.com/CalvinCandra/BaliJobFinder"
 }

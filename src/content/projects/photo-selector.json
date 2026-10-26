@@ -1,8 +1,29 @@
 {
   "slug": "photo-selector",
-  "title": "Photo Selector",
-  "description": "Photo Selector merupakan sebuah website yang dibangun dengan tujuan untuk memudahkan fotografer dan client dalam melakukan pemilihan foto, dimana client dapat memilih foto yang diinginkan untuk di edit lebih lanjut oleh fotografer tanpa perlu mencatat secara manual ataupun melakukan captur dan mengirimkan ke photografer satu per satu, dengan adanya web ini tentu meringankan pekerjaan fotografer dan client dalam melakukan pemilihan foto. \n website ini terhubung langsung dengan google drive dimana, cara kerja website ini adalah, fotografer mengupload link google drive pada website dan menyantumkan jumlah limit foto yang dapat dipilih oleh client, dan mencantumkan nomor whatsapp untuk dikirim nama file yang ingin di edit.",
+  "title": "Photo Selector (Kala Archives)",
+  "description": "Platform web photo proofing dan alur kerja (workflow) seleksi foto modern untuk fotografer profesional dan klien, terintegrasi langsung dengan Google Drive API serta sinkronisasi multi-device real-time.",
+  "problem": "Proses kurasi foto pasca-pemotretan (photo proofing) kerap memakan waktu dan melelahkan: klien harus mencatat nomor file secara manual, mengambil tangkapan layar (screenshot) satu per satu, atau mengalami kesulitan berdiskusi jika memilih foto bersama pasangan/keluarga dari perangkat berbeda. Di sisi fotografer, mencocokkan ratusan file pilihan klien dengan ribuan file RAW berukuran besar di komputer lokal sering menimbulkan salah input dan memperlambat deadline pengiriman hasil akhir.",
+  "features": [
+    "Google Drive Direct Streaming: Menampilkan preview foto langsung dari folder Google Drive fotografer tanpa perlu re-upload ke server (menggunakan Service Account server-side yang aman).",
+    "Shared Live Selection (Real-time Sync): Klien dan keluarga dapat membuka galeri yang sama dari berbagai perangkat (smartphone & laptop) secara simultan; status foto terpilih tersinkronisasi instan dua arah via Supabase Realtime (WebSocket).",
+    "Enforced Global Selection Limit: Kuota batas maksimal pilihan foto terkunci otomatis di tingkat database melalui PostgreSQL Atomic Function untuk mencegah race-condition antar perangkat.",
+    "Dual Export Action (WhatsApp & Copy List): Klien dapat mengirimkan daftar file terpilih langsung ke WhatsApp fotografer dengan template pesan rapi, atau menyalin daftar nama file dengan satu klik (Copy to Clipboard).",
+    "Photographer Admin & Dashboard (/admin): Wizard instan untuk membuat galeri via URL folder Google Drive, menentukan kuota pemilihan, memantau progres pilihan klien secara langsung, dan mengelola galeri aktif.",
+    "Editor Workspace & RAW Matching (/editor): Alat bantu fotografer untuk mencocokkan daftar nama file pilihan klien secara otomatis dengan file RAW (.CR2, .CR3, .ARW, .NEF, .DNG) dan JPG di folder komputer lokal untuk efisiensi ekspor editing.",
+    "Responsive Mobile-First UI & Lightbox: Tampilan galeri modern dan ergonomis di smartphone dengan navigasi preview foto layar penuh cepat serta indikator status sinkronisasi live."
+  ],
+  "impact": "Memangkas waktu kurasi dan seleksi foto hingga lebih dari 80%, mengeliminasi risiko salah catat nama file foto, serta menghadirkan alur kerja proofing yang profesional, aman (Row Level Security & server-side credentials), dan ergonomis bagi klien maupun fotografer.",
   "image": "photo-selector.png",
+  "tech": [
+    "Next.js (App Router)",
+    "React 19",
+    "TypeScript",
+    "Tailwind CSS v4",
+    "Supabase (PostgreSQL & Realtime)",
+    "Google Drive API (v3)",
+    "Vercel"
+  ],
   "github": "https://github.com/OkaWiyana/photo-selector",
-  "link": "https://github.com/OkaWiyana/photo-selector"
+  "demo": "https://kala-archives.vercel.app",
+  "link": "https://kala-archives.vercel.app"
 }

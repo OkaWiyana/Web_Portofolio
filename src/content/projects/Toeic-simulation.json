@@ -1,8 +1,28 @@
 {
   "slug": "toeic-simulation",
-  "title": "TOEIC Prep Simulation",
-  "description": "TOEIC Prep Simulation merupakan sebuah platform simulasi tes TOEIC yang dibuat khusunya untuk mahasiswa Politeknik Negeri Bali, website ini dibangun dengan tujuan untuk membantu mahasiswa dalam berlatih menjawab test TOEIC sebelum mengikuti tes yang sebenarnya, dengan fitur selfstudy dan try out mahasiswa dapat berlatih menjawab soal TOEIC sesuai dengan struktur aslinya, selain itu fitur ini juga dapat membantu mahasiswa dalam mengevaluasi kemampuannya dalam menjawab soal TOEIC dan memberikan rekomendasi untuk meningkatkannya.",
+  "title": "TOEIC Prep Simulation (PNB CBT Platform)",
+  "description": "Platform Computer Based Testing (CBT) simulasi ujian TOEIC komprehensif untuk mahasiswa Politeknik Negeri Bali (PNB), dilengkapi sistem bank soal multi-part, streaming audio listening terproteksi, mode latihan mandiri (Self-Study), serta konversi skor standar TOEIC otomatis.",
+  "problem": "Sebelumnya, pelaksanaan try out dan persiapan ujian sertifikasi TOEIC di Politeknik Negeri Bali masih mengandalkan lembar jawab manual berbasis kertas atau platform pihak ketiga yang tidak terpusat. Hal ini menyulitkan pengawas dalam mendistribusikan token sesi ujian, menguras waktu panitia dalam mengoreksi ratusan lembar jawaban, serta membatasi mahasiswa untuk berlatih mandiri secara terstruktur sesuai format standar Listening dan Reading TOEIC.",
+  "features": [
+    "Realistic CBT Exam Engine: Antarmuka ujian digital interaktif dengan navigasi part soal, dan countdown timer otomatis yang mensimulasikan kondisi tes resmi 200 soal (100 Listening, 100 Reading).",
+    "Protected Audio Streaming (AWS S3): Penanganan berkas audio listening (Part 1-4) menggunakan cloud storage AWS S3 untuk menjamin stabilitas streaming dan mencegah kecurangan manipulasi file di browser.",
+    "Self-Study & Performance Evaluation: Fitur latihan mandiri yang memungkinkan mahasiswa berlatih per bagian/kategori soal kapan saja, dilengkapi riwayat pengerjaan dan analisis capaian kemampuan bahasa.",
+    "Multi-Role System (Admin, Petugas, & Mahasiswa): Sistem otentikasi multi-level; Admin mengelola bank soal dan jadwal sesi, Petugas dapat mengelola bank soal dan peserta, dan Mahasiswa mengerjakan ujian sesuai token aktif.",
+    "Automated TOEIC Score Conversion: Algoritma otomatis yang mengonversi akumulasi jawaban benar peserta ke skala skor standar TOEIC (10 - 990) secara instan sesaat setelah ujian diselesaikan.",
+    "Bulk Export: Ekspor rekapitulasi nilai massal per sesi ke Excel (Maatwebsite Excel), cetak hasil skor format PDF (DOMPDF), dan paket arsip ZIP."
+  ],
+  "impact": "Mendigitalisasi pelaksanaan simulasi TOEIC bagi ratusan mahasiswa PNB per sesi, meniadakan biaya penggandaan kertas ujian, memangkas waktu rekapitulasi nilai dari berhari-hari menjadi hitungan detik, serta meningkatkan kesiapan mahasiswa menghadapi tes sertifikasi internasional.",
   "image": "toeic.png",
+  "tech": [
+    "Laravel 11",
+    "PHP 8.2",
+    "MySQL",
+    "Tailwind CSS",
+    "Vite",
+    "AWS S3",
+    "DOMPDF",
+    "Maatwebsite Excel"
+  ],
   "github": "#",
   "link": "#"
 }

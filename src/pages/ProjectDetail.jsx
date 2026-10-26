@@ -14,10 +14,19 @@ const ProjectDetail = () => {
   const { slug } = useParams();
   const project = allProjects.find((p) => p.slug === slug);
 
-  // Scroll to top on mount
+  // Scroll to top on mount and set dynamic SEO page title
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [slug]);
+    if (project) {
+      document.title = `${project.title} | Oka Wiyana Portfolio`;
+    } else {
+      document.title = "Project Not Found | Oka Wiyana";
+    }
+    return () => {
+      document.title =
+        "Oka Wiyana (I Gusti Lanang Oka Wiyana) | Web Developer & Software Engineer";
+    };
+  }, [slug, project]);
 
   if (!project) {
     return (

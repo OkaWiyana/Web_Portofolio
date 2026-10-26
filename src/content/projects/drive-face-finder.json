@@ -1,0 +1,28 @@
+{
+  "slug": "drive-face-finder",
+  "title": "Drive Face Finder (AI Photo Search)",
+  "description": "Aplikasi web pencarian foto berbasis kecerdasan buatan (Face Recognition AI) ultra-ringan tanpa database (Zero-Database, Client-Side AI) yang membantu pengguna menemukan foto diri secara instan di dalam folder publik Google Drive (wisuda, lari/marathon, seminar, konser, atau gathering) dengan jaminan privasi 100% aman.",
+  "problem": "Mencari foto diri di antara ribuan foto dokumentasi acara (seperti event marathon, wisuda universitas, festival musik, atau seminar) yang dibagikan melalui link folder Google Drive publik sangat melelahkan dan memakan waktu berjam-jam karena harus memeriksa foto satu per satu secara manual. Selain itu, pengguna sering ragu menggunakan platform pihak ketiga yang mewajibkan upload foto wajah ke server asing karena khawatir data biometrik privasi mereka disalahgunakan.",
+  "features": [
+    "Client-Side Face Recognition AI: Ekstraksi vektor wajah (128-float descriptors) dan pencocokan Euclidean distance dijalankan 100% di peramban pengguna via WebAssembly/WebGL (@vladmandic/face-api) tanpa pernah mengirimkan foto atau data biometrik ke server manapun.",
+    "Google Drive Public Folder & Sub-Folder Scan: Cukup tempel tautan folder Google Drive publik, sistem akan memindai dan membaca seluruh direktori utama hingga sub-folder di dalamnya secara rekursif dan otomatis.",
+    "Multi-Angle Face Enrollment: Ambil foto selfie langsung via webcam atau unggah beberapa foto sekaligus dari berbagai sudut (depan, miring, tersenyum) untuk memaksimalkan akurasi pengenalan.",
+    "Real-Time Tolerance Adjustment: Pengaturan slider sensitivitas kemiripan (threshold 0.36 – 0.50) dengan preset instan (Sangat Ketat 0.38, Standar Akurat 0.42, Fleksibel 0.46) yang langsung memperbarui galeri hasil secara instan tanpa perlu scan ulang.",
+    "Smart Client Caching (IndexedDB): Penyimpanan cache vektor deskriptor wajah di browser lokal (idb-keyval), membuat pemindaian berikutnya pada folder yang sama berjalan instan.",
+    "Live Streaming Progress & Modal Preview: Indikator progress bar pemindaian real-time yang memunculkan foto cocok satu per satu, lengkap dengan modal preview resolusi tinggi, bounding box wajah, dan tombol unduh langsung dari Google Drive."
+  ],
+  "impact": "Memangkas waktu pencarian foto diri di folder ribuan dokumentasi acara dari berjam-jam menjadi beberapa detik saja tanpa perlu instalasi aplikasi, serta menjamin privasi biometrik pengguna tetap 100% terjaga di perangkat masing-masing.",
+  "image": "drive-face-finder.png",
+  "tech": [
+    "Next.js 16 (App Router)",
+    "React 19",
+    "TypeScript",
+    "Tailwind CSS v4",
+    "@vladmandic/face-api",
+    "IndexedDB (idb-keyval)",
+    "Vercel"
+  ],
+  "github": "https://github.com/OkaWiyana/drive-foto-finder",
+  "demo": "https://drive-face-finder.vercel.app/",
+  "link": "https://drive-face-finder.vercel.app/"
+}

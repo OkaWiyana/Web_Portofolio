@@ -6,6 +6,7 @@ import { Turnstile } from "@marsidev/react-turnstile";
 
 // CMS Data Imports
 import homeData from "../content/home/index.json";
+import { div } from "framer-motion/client";
 
 // Import all project and skill JSONs
 const projectModules = import.meta.glob("../content/projects/*.json", {
@@ -32,6 +33,24 @@ const Homepage = () => {
   const [honeypot, setHoneypot] = useState("");
   const turnstileRef = useRef(null);
   const turnstileSiteKey = import.meta.env.VITE_CLOUDFLARE_TURNSTILE_SITE_KEY;
+
+  // data pendidikan
+  const eduData = [
+    {
+      period: "2022 - 2026",
+      school: "Politeknik Negeri Bali",
+      degre: "D4 - Teknologi Rekayasa Perangkat Lunak (S.Tr.Kom.)",
+      gpa: "IPK 3.97 / 4.00",
+      isCurrentOrLatest: true,
+    },
+    {
+      period: "2019 - 2022",
+      school: "SMA Negeri 1 Selat",
+      degre: "MIPA (Matematika dan IPA)",
+      gpa: null,
+      isCurrentOrLatest: false,
+    },
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -171,7 +190,7 @@ const Homepage = () => {
               <motion.a
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                href="https://drive.usercontent.google.com/download?id=1quUTnVrP5ZnARH7a76vrPfSvfQUM2s3I"
+                href="https://drive.usercontent.google.com/download?id=1hHgx6PtQHHck3NFzWYPdFCd0HEjp8dUp"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white font-semibold py-3 px-8 rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 text-sm"
               >
                 Download CV <i className="ri-download-2-line"></i>
@@ -363,6 +382,67 @@ const Homepage = () => {
           </motion.div>
         </section>
         {/* Section About End */}
+
+        {/* Section Education Start*/}
+        <section id="education" className="py-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16 max-w-5xl mx-auto"
+          >
+            <div className="md:w-4/12 md:pl-20 text-center md:text-start">
+              <h1 className="uppercase text-base md:text-base font-semibold text-primary">
+                My Journey
+              </h1>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
+                Education
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                Riwayat pendidikan formal dari jenjang sekolah menengah hingga
+                perguruan tinggi
+              </p>
+            </div>
+            <div className="md:w-6/12 w-full">
+              {eduData.map((item, index) => (
+                <div
+                  key={index}
+                  className={`relative pl-8 ${index !== eduData.length - 1 ? "pb-8" : "pb-0"}`}
+                >
+                  {index !== eduData.length - 1 && (
+                    <span className="absolute left-[6.5px] top-3.5 -bottom-2 w-[1px] bg-slate-200 dark:bg-slate-800" />
+                  )}
+                  <span
+                    className={`absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full border-2 z-10 ${item.isCurrentOrLatest ? "bg-primary border-white dark:border-slate-950 ring-4 ring-primary/20" : "bg-slate-300 dark:bg-slate-700 border-white dark:border-slate-950"}`}
+                  />
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      <span className="text-lg font-mono font-semibold text-primary">
+                        {item.period}
+                      </span>
+                      {item.gpa && (
+                        <span
+                          className="text-sm ont-medium px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200
+                       dark:border-slate-800 text-slate-700 dark:text-slate-300"
+                        >
+                          {item.gpa}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">
+                      {item.school}
+                    </h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-0.5">
+                      {item.degre}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+        {/* Section Education End*/}
 
         {/* Section Skills Start */}
         <section id="skills" className="py-20">

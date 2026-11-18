@@ -1,0 +1,12 @@
+{
+  "order": 4,
+  "role": "Fullstack Developer TOEIC Prep Simulation PNB",
+  "company": "Politeknik Negeri Bali",
+  "employmentType": "Part-time",
+  "period": "Mar 2024 - Jul 2024",
+  "location": "Badung, Bali",
+  "workType": "Hybrid",
+  "description": "Bertanggung jawab penuh dari tahap analisis kebutuhan, perancangan UI/UX di Figma, hingga pengembangan full-stack website simulasi TOEIC untuk Politeknik Negeri Bali. Sistem ini dibangun menggunakan ekosistem Laravel (PHP), JavaScript, dan Tailwind CSS dengan fokus pada antarmuka yang fungsional dan pengalaman pengguna yang lancar.",
+  "skills": ["Laravel", "Tailwind", "PHP", "MySQL", "Figma"],
+  "isCurrent": false
+}

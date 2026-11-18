@@ -137,7 +137,7 @@ const ProjectDetail = () => {
                   <span className="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center text-sm">
                     <i className="ri-error-warning-line"></i>
                   </span>
-                  Latar Belakang (The Problem)
+                  Latar Belakang
                 </h3>
                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">
                   {project.problem}
@@ -152,7 +152,7 @@ const ProjectDetail = () => {
                   <span className="w-7 h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-sm">
                     <i className="ri-checkbox-circle-line"></i>
                   </span>
-                  Fitur & Cara Kerja (Key Features)
+                  Fitur & Cara Kerja
                 </h3>
                 <ul className="space-y-2.5">
                   {project.features.map((feature, i) => (
@@ -175,7 +175,7 @@ const ProjectDetail = () => {
                   <span className="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-sm">
                     <i className="ri-rocket-line"></i>
                   </span>
-                  Dampak & Skala Uji Coba (Impact)
+                  Dampak & Skala Uji Coba
                 </h3>
                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">
                   {project.impact}

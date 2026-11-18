@@ -1,4 +1,5 @@
 {
   "name": "Git & GitHub",
-  "icon": "github-light.png"
+  "icon": "github-light.png",
+  "iconLight": "github.svg"
 }

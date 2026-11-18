@@ -48,14 +48,15 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="glass border-t border-slate-200 dark:border-slate-800 mt-20 relative z-10">
-      <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between">
+    <footer className="glass border-t border-slate-200 dark:border-slate-800 mt-10 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
         <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 md:mb-0">
           &copy; {new Date().getFullYear()}{" "}
           <span className="text-slate-900 dark:text-white font-semibold">
             I Gusti Lanang Oka Wiyana
           </span>
-          . All rights reserved.
+          <span className="px-2">|</span>
+          All rights reserved
         </p>
 
         <div className="flex space-x-3">

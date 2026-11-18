@@ -1,0 +1,12 @@
+{
+  "order": 3,
+  "role": "FrontEnd & UI/UX Designer SINA",
+  "company": "Politeknik Negeri Bali",
+  "employmentType": "Part-time",
+  "period": "Sep 2024 - Des 2024",
+  "location": "Badung, Bali",
+  "workType": "Hybrid",
+  "description": "Bertanggung jawab dari tahap riset, perancangan prototipe UI/UX di Figma, hingga pengembangan frontend untuk website manajemen data sekolah (SINA). Aplikasi dibangun secara responsif menggunakan React.js dan Tailwind CSS (DaisyUI), serta diintegrasikan dengan API backend untuk memastikan fungsionalitas yang optimal.",
+  "skills": ["React", "Tailwind", "Javascript", "Postman"],
+  "isCurrent": false
+}

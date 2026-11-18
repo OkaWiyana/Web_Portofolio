@@ -44,7 +44,7 @@ const Navbar = () => {
     { name: "Home", href: "/#home" },
     { name: "About", href: "/#about" },
     { name: "Skills", href: "/#skills" },
-    { name: "Services", href: "/#services" },
+    { name: "Experience", href: "/#experience" },
     { name: "Projects", href: "/#projects" },
     { name: "Contact", href: "/#contact" },
   ];
@@ -54,12 +54,14 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "glass shadow-lg py-4" : "bg-transparent py-6"
+      className={`fixed top-0 inset-x-0 mx-auto w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "glass shadow-lg py-4 mt-2 max-w-7xl mx-auto rounded-3xl"
+          : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="text-2xl font-bold text-gradient">
+        <a href="#home" className="text-2xl font-bold">
           Oka Wiyana
         </a>
 

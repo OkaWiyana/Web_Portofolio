@@ -44,7 +44,7 @@ const Navbar = () => {
     { name: "Home", href: "/#home" },
     { name: "About", href: "/#about" },
     { name: "Skills", href: "/#skills" },
-    { name: "Services", href: "/#services" },
+    { name: "Experience", href: "/#experience" },
     { name: "Projects", href: "/#projects" },
     { name: "Contact", href: "/#contact" },
   ];
@@ -61,7 +61,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="text-2xl font-bold text-gradient">
+        <a href="#home" className="text-2xl font-bold">
           Oka Wiyana
         </a>
 

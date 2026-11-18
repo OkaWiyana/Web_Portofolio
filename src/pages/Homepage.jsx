@@ -6,7 +6,15 @@ import { Turnstile } from "@marsidev/react-turnstile";
 
 // CMS Data Imports
 import homeData from "../content/home/index.json";
-import { div } from "framer-motion/client";
+import { div, span } from "framer-motion/client";
+
+const experinceModules = import.meta.glob("../content/experience/*.json", {
+  eager: true,
+});
+
+const experinceData = Object.values(experinceModules)
+  .map((mod) => mod.default || mod)
+  .sort((a, b) => a.order - b.order);
 
 // Import all project and skill JSONs
 const projectModules = import.meta.glob("../content/projects/*.json", {
@@ -197,25 +205,28 @@ const Homepage = () => {
               </motion.a>
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:text-primary dark:hover:text-primary hover:border-primary/40 font-semibold text-sm transition-all duration-300"
+                className="group hover:scale-105 active:scale-95 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-400 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:border-primary/40 font-semibold text-sm transition-all duration-300"
               >
                 <span>View Projects</span>
-                <i className="ri-arrow-right-line"></i>
+                <i className="ri-arrow-right-line inline-block transition-transform duration-300 group-hover:translate-x-1.5"></i>
               </a>
             </div>
 
             {/* Core Tech Stack Highlights (Menyeimbangkan ruang kosong desktop) */}
             <div className="pt-6 border-t border-slate-200/80 dark:border-slate-800/80 text-left">
-              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-3">
+              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-3 text-center md:text-left">
                 Core Technologies
               </p>
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
                 {[
                   { name: "React", icon: "ri-reactjs-line" },
                   { name: "JavaScript", icon: "ri-javascript-line" },
+                  { name: "Laravel", icon: "ri-fire-line" },
+                  { name: "PHP", icon: "ri-code-s-slash-line" },
                   { name: "Tailwind CSS", icon: "ri-paint-brush-line" },
                   { name: "Node.js", icon: "ri-server-line" },
                   { name: "UI/UX Design", icon: "ri-layout-masonry-line" },
+                  { name: "Photography", icon: "ri-camera-3-fill" },
                 ].map((tech, i) => (
                   <span
                     key={i}
@@ -383,69 +394,8 @@ const Homepage = () => {
         </section>
         {/* Section About End */}
 
-        {/* Section Education Start*/}
-        <section id="education" className="py-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16 max-w-5xl mx-auto"
-          >
-            <div className="md:w-4/12 md:pl-20 text-center md:text-start">
-              <h1 className="uppercase text-base md:text-base font-semibold text-primary">
-                My Journey
-              </h1>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
-                Education
-              </h2>
-              <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
-                Riwayat pendidikan formal dari jenjang sekolah menengah hingga
-                perguruan tinggi
-              </p>
-            </div>
-            <div className="md:w-6/12 w-full">
-              {eduData.map((item, index) => (
-                <div
-                  key={index}
-                  className={`relative pl-8 ${index !== eduData.length - 1 ? "pb-8" : "pb-0"}`}
-                >
-                  {index !== eduData.length - 1 && (
-                    <span className="absolute left-[6.5px] top-3.5 -bottom-2 w-[1px] bg-slate-200 dark:bg-slate-800" />
-                  )}
-                  <span
-                    className={`absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full border-2 z-10 ${item.isCurrentOrLatest ? "bg-primary border-white dark:border-slate-950 ring-4 ring-primary/20" : "bg-slate-300 dark:bg-slate-700 border-white dark:border-slate-950"}`}
-                  />
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                      <span className="text-lg font-mono font-semibold text-primary">
-                        {item.period}
-                      </span>
-                      {item.gpa && (
-                        <span
-                          className="text-sm ont-medium px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-200
-                       dark:border-slate-800 text-slate-700 dark:text-slate-300"
-                        >
-                          {item.gpa}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">
-                      {item.school}
-                    </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-0.5">
-                      {item.degre}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </section>
-        {/* Section Education End*/}
-
         {/* Section Skills Start */}
-        <section id="skills" className="py-20">
+        <section id="skills" className="py-20 pb-32">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -468,11 +418,29 @@ const Homepage = () => {
                 variants={fadeInUp}
                 className="glass-card p-4 rounded-xl flex items-center gap-4 hover:scale-105 transition-transform w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] lg:w-[calc(20%-20px)]"
               >
-                <img
-                  src={`/images/skills/${skill.icon}`}
-                  alt={skill.name}
-                  className="w-8 h-8"
-                />
+                {skill.iconLight ? (
+                  <>
+                    {/* only ligth mode */}
+                    <img
+                      src={`/images/skills/${skill.iconLight}`}
+                      alt={skill.name}
+                      className="w-8 h-8 dark:hidden"
+                    />
+                    {/* only dark mode */}
+                    <img
+                      src={`/images/skills/${skill.icon}`}
+                      alt={skill.name}
+                      className="w-8 h-8 hidden dark:block"
+                    />
+                  </>
+                ) : (
+                  /* default*/
+                  <img
+                    src={`/images/skills/${skill.icon}`}
+                    alt={skill.name}
+                    className="w-8 h-8"
+                  />
+                )}
                 <span className="text-slate-900 dark:text-white font-medium">
                   {skill.name}
                 </span>
@@ -482,8 +450,140 @@ const Homepage = () => {
         </section>
         {/* Section Skills End */}
 
+        {/* Section Experience Start */}
+        <section id="experience" className="py-20">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16 max-w-5xl mx-auto"
+          >
+            <div className="text-center md:w-4/12 md:text-start">
+              <h2 className="text-base uppercase text-primary font-semibold">
+                carrer path
+              </h2>
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
+                Experience
+              </h1>
+              <p className="dark:text-slate-400 text-slate-600 text-base leading-relaxed">
+                Rekam jejak pengalaman kerja, kontribusi profesional, dan
+                implementasi sistem nyata.
+              </p>
+            </div>
+            <div className="md:w-6/12 w-full">
+              {experinceData.map((experience, index) => (
+                <div
+                  key={index}
+                  className={`relative pl-8 ${index !== experinceData.length - 1 ? "pb-8" : "pb-0"}`}
+                >
+                  {index !== experinceData.length - 1 && (
+                    <span className="absolute left-[6px] top-3.5 -bottom-2 w-[2px] bg-slate-300 dark:bg-slate-800" />
+                  )}
+                  <span
+                    className={`absolute left-0 top-[7px] w-3.5 h-3.5 rounded-full border-2 z-10 ${experience.isCurrent ? "bg-primary border-white dark:border-slate-950 ring-4 ring-primary/20 " : "bg-slate-300 dark:bg-slate-700 border-white dark:border-slate-950"}`}
+                  />
+                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                    <span className="text-primary text-lg font-mono font-semibold">
+                      {experience.period}
+                    </span>
+                    <span className="border border-slate-300 dark:border-slate-700 rounded-md px-2 py-0.5 text-xs bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300">
+                      {experience.employmentType}
+                    </span>
+                    <span className="border border-slate-300 dark:border-slate-700 rounded-md text-xs px-2 py-0.5 bg-slate-200 dark:bg-slate-900">
+                      <i className="ri-map-pin-5-fill text-red-600">
+                        <span className="pl-2 dark:text-green-500 text-green-600">
+                          {experience.location} | {experience.workType}
+                        </span>
+                      </i>
+                    </span>
+                  </div>
+                  <h2 className="font-bold text-xl">{experience.role}</h2>
+                  <h3 className="font-semibold text-slate-700 dark:text-slate-300 pt-1">
+                    {experience.company}
+                  </h3>
+                  <p className="text-justify text-slate-600 dark:text-slate-400 py-3">
+                    {experience.description}
+                  </p>
+                  {experience.skills && experience.skills.length > 0 && (
+                    <div className="flex flex-wrap items-center gap-2 mt-2">
+                      {experience.skills.map((skill, i) => (
+                        <span
+                          key={skill}
+                          className="border text-xs border-slate-400 dark:border-slate-600 rounded-md px-2 py-0.5 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+        {/* Section Experience End */}
+
+        {/* Section Education Start*/}
+        <section id="education" className="py-20">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-16 max-w-5xl mx-auto"
+          >
+            <div className="md:w-4/12 text-center md:text-start">
+              <h1 className="uppercase text-base md:text-base font-semibold text-primary">
+                My Journey
+              </h1>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
+                Education
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed">
+                Riwayat pendidikan formal dari jenjang sekolah menengah hingga
+                perguruan tinggi
+              </p>
+            </div>
+            <div className="md:w-6/12 w-full">
+              {eduData.map((item, index) => (
+                <div
+                  key={index}
+                  className={`relative pl-8 ${index !== eduData.length - 1 ? "pb-8" : "pb-0"}`}
+                >
+                  {index !== eduData.length - 1 && (
+                    <span className="absolute left-[6px] top-3.5 -bottom-2 w-[2px] bg-slate-200 dark:bg-slate-800" />
+                  )}
+                  <span
+                    className={`absolute left-0 top-[7px] w-3.5 h-3.5 rounded-full border-2 z-10 ${item.isCurrentOrLatest ? "bg-primary border-white dark:border-slate-950 ring-4 ring-primary/20" : "bg-slate-300 dark:bg-slate-700 border-white dark:border-slate-950"}`}
+                  />
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      <span className="text-lg font-mono font-semibold text-primary">
+                        {item.period}
+                      </span>
+                      {item.gpa && (
+                        <span className="border border-green-500 dark:border-green-800 rounded-md px-2 py-0.5 text-xs bg-green-200/10 dark:bg-green-400/10 text-green-700 dark:text-green-500">
+                          {item.gpa}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">
+                      {item.school}
+                    </h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-0.5">
+                      {item.degre}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+        {/* Section Education End*/}
+
         {/* Section Services Start */}
-        <section id="services" className="py-20">
+        {/* <section id="services" className="py-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -538,7 +638,7 @@ const Homepage = () => {
               </motion.div>
             ))}
           </div>
-        </section>
+        </section> */}
         {/* Section Services End */}
 
         {/* Section Projects Start */}
@@ -613,7 +713,7 @@ const Homepage = () => {
         {/* Section Projects End */}
 
         {/* Section Contact Start */}
-        <section id="contact" className="py-20 mb-20">
+        <section id="contact" className="pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -830,6 +830,7 @@ const Homepage = () => {
                     onError={() => setTurnstileToken("")}
                     options={{
                       theme: "auto",
+                      appearance: "interaction-only",
                     }}
                   />
                 </div>

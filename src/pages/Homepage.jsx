@@ -6,7 +6,7 @@ import { Turnstile } from "@marsidev/react-turnstile";
 
 // CMS Data Imports
 import homeData from "../content/home/index.json";
-import { div, label, span } from "framer-motion/client";
+import { div, label, li, span } from "framer-motion/client";
 
 const experinceModules = import.meta.glob("../content/experience/*.json", {
   eager: true,
@@ -520,9 +520,27 @@ const Homepage = () => {
                   <h3 className="font-semibold text-slate-700 dark:text-slate-300 pt-1">
                     {experience.company}
                   </h3>
-                  <p className="text-justify text-slate-600 dark:text-slate-400 py-3">
+                  {/* <p className="text-justify text-slate-600 dark:text-slate-400 py-3">
                     {experience.description}
-                  </p>
+                  </p> */}
+                  {experience.description && (
+                    <ul className="py-2.5 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                      {Array.isArray(experience.description) ? (
+                        experience.description.map((desc, i) => (
+                          <li key={i} className="flex items-start gap-2.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-slate-800 dark:bg-slate-600 mt-2 flex-shrink-0" />
+                            <span className="leading-relaxed text-justify">
+                              {desc}
+                            </span>
+                          </li>
+                        ))
+                      ) : (
+                        <li className="leading-relaxed text-justify">
+                          {experience.description}
+                        </li>
+                      )}
+                    </ul>
+                  )}
                   {experience.skills && experience.skills.length > 0 && (
                     <div className="flex flex-wrap items-center gap-2 mt-2">
                       {experience.skills.map((skill, i) => (

@@ -6,7 +6,11 @@
   "period": "Feb 2023 - May 2023",
   "location": "Badung, Bali",
   "workType": "Hybrid",
-  "description": "Merancang aset visual acara yang konsisten dengan tema (spanduk, sertifikat, nametag) menggunakan Adobe Photoshop, Illustrator, dan Canva. Selain pembuatan desain, juga berpengalaman memimpin tim dokumentasi acara mulai dari persiapan alat, peliputan momen penting, hingga manajemen backup data.",
+  "description": [
+    "Merancang materi visual acara (spanduk, sertifikat, papan simbolis, nametag) agar selaras dengan tema menggunakan Photoshop, Illustrator, dan Canva",
+    "Memimpin tim desain dan dokumentasi secara langsung di lapangan selama acara berlangsung",
+    "Menyiapkan peralatan liputan serta mengelola pencadangan (backup) data dokumentasi"
+  ],
   "skills": ["Photoshop", "Adobe Ilustrator", "Canva", "CapCut"],
   "isCurrent": false
 }

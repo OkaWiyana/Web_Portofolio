@@ -305,7 +305,9 @@ const Homepage = () => {
               <img
                 src={`/images/hero/${homeData.heroImage}`}
                 alt="I Gusti Lanang Oka Wiyana"
-                loading="lazy"
+                fetchPriority="high"
+                width="400"
+                height="500"
                 className="relative z-10 h-[380px] sm:h-[440px] md:h-[500px] max-w-none w-auto object-contain drop-shadow-2xl pointer-events-none [mask-image:linear-gradient(to_bottom,black_85%,transparent)]"
               />
             )}
@@ -335,6 +337,8 @@ const Homepage = () => {
                 src={`/images/hero/${homeData.aboutImage}`}
                 alt="About Oka"
                 loading="lazy"
+                width="400"
+                height="460"
                 className="relative z-10 h-[350px] sm:h-[410px] md:h-[460px] w-auto object-contain drop-shadow-2xl pointer-events-none [mask-image:linear-gradient(to_bottom,black_85%,transparent)]"
               />
             )}

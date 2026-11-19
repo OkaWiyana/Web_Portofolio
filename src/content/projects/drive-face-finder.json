@@ -12,7 +12,7 @@
     "Live Streaming Progress & Modal Preview: Indikator progress bar pemindaian real-time yang memunculkan foto cocok satu per satu, lengkap dengan modal preview resolusi tinggi, bounding box wajah, dan tombol unduh langsung dari Google Drive."
   ],
   "impact": "Memangkas waktu pencarian foto diri di folder ribuan dokumentasi acara dari berjam-jam menjadi beberapa detik saja tanpa perlu instalasi aplikasi, serta menjamin privasi biometrik pengguna tetap 100% terjaga di perangkat masing-masing.",
-  "image": "drive-face-finder.png",
+  "image": "drive-face-finder.webp",
   "tech": [
     "Next.js 16 (App Router)",
     "React 19",

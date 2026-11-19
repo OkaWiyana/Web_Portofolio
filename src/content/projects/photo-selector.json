@@ -13,7 +13,7 @@
     "Responsive Mobile-First UI & Lightbox: Tampilan galeri modern dan ergonomis di smartphone dengan navigasi preview foto layar penuh cepat serta indikator status sinkronisasi live."
   ],
   "impact": "Memangkas waktu kurasi dan seleksi foto hingga lebih dari 80%, mengeliminasi risiko salah catat nama file foto, serta menghadirkan alur kerja proofing yang profesional, aman (Row Level Security & server-side credentials), dan ergonomis bagi klien maupun fotografer.",
-  "image": "photo-selector.png",
+  "image": "photo-selector.webp",
   "tech": [
     "Next.js (App Router)",
     "React 19",

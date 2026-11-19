@@ -12,7 +12,7 @@
     "Direct Online Application: Kemudahan mengajukan lamaran kerja secara instan dengan satu klik menggunakan CV tersimpan atau berkas pendukung baru tanpa perlu membuka aplikasi email terpisah."
   ],
   "impact": "Memusatkan ekosistem rekrutmen kerja lokal di Bali, menghubungkan pencari kerja dengan puluhan perusahaan kredibel terverifikasi, memangkas proses screening lamaran kerja manual, serta memberikan kepastian transparansi status seleksi bagi para talenta kerja.",
-  "image": "project 1.png",
+  "image": "bali-job-finder.webp",
   "tech": [
     "CodeIgniter 3",
     "PHP",

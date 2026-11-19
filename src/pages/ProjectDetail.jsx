@@ -42,7 +42,8 @@ const ProjectDetail = () => {
           </h1>
           <p className="text-slate-600 dark:text-slate-400 mb-8">
             Project with slug{" "}
-            <code className="text-primary font-mono">"{slug}"</code> does not exist.
+            <code className="text-primary font-mono">"{slug}"</code> does not
+            exist.
           </p>
           <Link
             to="/#projects"
@@ -70,6 +71,7 @@ const ProjectDetail = () => {
           <>
             <img
               src={`/images/projects/${project.image}`}
+              loading="lazy"
               alt={project.title}
               className="w-full h-full object-cover"
             />
@@ -349,6 +351,7 @@ const ProjectDetail = () => {
                           <img
                             src={`/images/projects/${other.image}`}
                             alt={other.title}
+                            loading="lazy"
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                           />
                         ) : (

@@ -26,3 +26,5 @@ dist
 *.sw?
 
 anti-slop/*
+lighthouse*.json
+

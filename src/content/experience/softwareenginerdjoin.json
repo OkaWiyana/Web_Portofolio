@@ -6,7 +6,12 @@
   "period": "Aug 2025 - Feb 2026",
   "location": "Denpasar, Bali",
   "workType": "On-site",
-  "description": "Bertanggung jawab dalam siklus pengembangan web dari sisi frontend (React, Tailwind) hingga integrasi sistem (Google OAuth, Xendit). Memiliki rekam jejak dalam mengimplementasikan AI customer service berbasis n8n dan memastikan kualitas platform fintech melalui automated testing menggunakan Playwright.",
+  "description": [
+    "Mengembangkan AI customer service yang terintegrasi dengan Telegram dan web chat menggunakan n8n",
+    "Membangun UI/UX microsite fintech menggunakan React dan Tailwind CSS, serta mengoptimalkan arsitektur kodenya (refactoring)",
+    "Mengimplementasikan autentikasi (Google OAuth) dan integrasi payment gateway (Xendit)",
+    "Melakukan automated testing menyeluruh (login, analisis kredit, dsb.) menggunakan Playwright"
+  ],
   "skills": ["React", "Tailwind", "Playwright", "Typescript"],
   "isCurrent": true
 }

@@ -6,7 +6,11 @@
   "period": "Mar 2024 - Jul 2024",
   "location": "Badung, Bali",
   "workType": "Hybrid",
-  "description": "Bertanggung jawab penuh dari tahap analisis kebutuhan, perancangan UI/UX di Figma, hingga pengembangan full-stack website simulasi TOEIC untuk Politeknik Negeri Bali. Sistem ini dibangun menggunakan ekosistem Laravel (PHP), JavaScript, dan Tailwind CSS dengan fokus pada antarmuka yang fungsional dan pengalaman pengguna yang lancar.",
+  "description": [
+    "Menganalisis kebutuhan dan merancang UI/UX website simulasi TOEIC Politeknik Negeri Bali menggunakan Figma",
+    "Mengembangkan sistem web secara menyeluruh (frontend & backend) menggunakan Laravel, PHP, JavaScript, dan Tailwind CSS",
+    "Mengubah desain UI/UX menjadi kode web fungsional yang berfokus pada kenyamanan pengguna"
+  ],
   "skills": ["Laravel", "Tailwind", "PHP", "MySQL", "Figma"],
   "isCurrent": false
 }

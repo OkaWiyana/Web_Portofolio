@@ -12,7 +12,7 @@
     "Optimasi Performa Browser dengan pemblokiran aset berat (gambar, video, font) untuk menghemat bandwidth dan mempercepat proses."
   ],
   "impact": "Mampu memproses dan mengunggah puluhan ribu foto dalam satu kali konfigurasi. Tersedia dalam versi siap pakai (.exe) untuk Windows 10/11 serta kompatibel lintas platform (macOS/Linux) via source code.",
-  "image": "fotoyu auto.png",
+  "image": "fotoyu auto.webp",
   "tech": [
     "Python",
     "Playwright",

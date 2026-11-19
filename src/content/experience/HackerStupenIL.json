@@ -6,7 +6,11 @@
   "period": "Sep 2024 - Des 2024",
   "location": "Batam, Riau",
   "workType": "Online",
-  "description": "Melalui program Studi Independen (MSIB) Kampus Merdeka, saya merancang dan mengembangkan Agrofy, sebuah platform pemberdayaan limbah pertanian. Tanggung jawab saya mencakup riset kebutuhan, desain UI/UX di Figma, hingga pembuatan API dan pengembangan aplikasi full-stack yang responsif menggunakan React, Express, dan Tailwind CSS.",
+  "description": [
+    "Mengembangkan website full-stack Agrofy (pemberdayaan limbah pertanian) sebagai bagian dari program Studi Independen (MSIB) Kampus Merdeka",
+    "Melakukan riset kebutuhan sistem dan merancang prototipe UI/UX menggunakan Figma",
+    "Membangun antarmuka responsif dan API yang aman untuk fitur forum, manajemen limbah, serta pelacakan produk dengan React, Express, dan Tailwind CSS"
+  ],
   "skills": ["React", "Express JS", "Tailwind", "Javascript", "Postman"],
   "isCurrent": false
 }

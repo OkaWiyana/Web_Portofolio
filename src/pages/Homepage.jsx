@@ -6,7 +6,7 @@ import { Turnstile } from "@marsidev/react-turnstile";
 
 // CMS Data Imports
 import homeData from "../content/home/index.json";
-import { div, span } from "framer-motion/client";
+import { div, label, span } from "framer-motion/client";
 
 const experinceModules = import.meta.glob("../content/experience/*.json", {
   eager: true,
@@ -152,7 +152,7 @@ const Homepage = () => {
     : [];
 
   return (
-    <div className="homepage pb-10 overflow-hidden">
+    <main id="content" className="homepage pb-10 overflow-hidden">
       {/* Calm Ambient Background Glow */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary/10 rounded-full blur-[140px]" />
@@ -256,7 +256,7 @@ const Homepage = () => {
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/25 via-transparent to-secondary/15 rounded-[2.5rem] blur-xl -z-10" />
               </div>
 
-              {/* Floating Badge 1: Status Available (Center-Bottom di HP, Kiri-Bawah di Desktop) */}
+              {/* Floating Badge */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -278,7 +278,7 @@ const Homepage = () => {
                 </div>
               </motion.div>
 
-              {/* Floating Badge 2: Discipline (Menempel rapi di bahu kanan atas kartu) */}
+              {/* Floating Badge 2 */}
               <motion.div
                 initial={{ opacity: 0, y: -15 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -305,6 +305,7 @@ const Homepage = () => {
               <img
                 src={`/images/hero/${homeData.heroImage}`}
                 alt="I Gusti Lanang Oka Wiyana"
+                loading="lazy"
                 className="relative z-10 h-[380px] sm:h-[440px] md:h-[500px] max-w-none w-auto object-contain drop-shadow-2xl pointer-events-none [mask-image:linear-gradient(to_bottom,black_85%,transparent)]"
               />
             )}
@@ -333,6 +334,7 @@ const Homepage = () => {
               <img
                 src={`/images/hero/${homeData.aboutImage}`}
                 alt="About Oka"
+                loading="lazy"
                 className="relative z-10 h-[350px] sm:h-[410px] md:h-[460px] w-auto object-contain drop-shadow-2xl pointer-events-none [mask-image:linear-gradient(to_bottom,black_85%,transparent)]"
               />
             )}
@@ -364,18 +366,29 @@ const Homepage = () => {
               {[
                 {
                   name: "Instagram",
+                  label: "Instagram Profile",
                   url: "https://www.instagram.com/wiyana_12",
                 },
                 {
                   name: "Facebook",
+                  label: "Facebook Profile",
                   url: "https://web.facebook.com/oka.wiyana.7/",
                 },
-                { name: "TikTok", url: "https://www.tiktok.com/@iglow_12" },
+                {
+                  name: "TikTok",
+                  label: "TikTok Profile",
+                  url: "https://www.tiktok.com/@iglow_12",
+                },
                 {
                   name: "LinkedIn",
+                  label: "LinkeIn Profile",
                   url: "https://www.linkedin.com/in/okawiyana/",
                 },
-                { name: "GitHub", url: "https://github.com/OkaWiyana" },
+                {
+                  name: "GitHub",
+                  label: "Github Profile",
+                  url: "https://github.com/OkaWiyana",
+                },
               ].map((social, index) => (
                 <a
                   key={index}
@@ -386,6 +399,7 @@ const Homepage = () => {
                 >
                   <i
                     className={`ri-${social.name.toLowerCase()}-fill text-xl`}
+                    aria-label={social.label}
                   ></i>
                 </a>
               ))}
@@ -670,7 +684,7 @@ const Homepage = () => {
                 >
                   <Link
                     to={`/projects/${project.slug}`}
-                    className="group relative overflow-hidden rounded-2xl glass-card block h-full flex flex-col"
+                    className="group relative overflow-hidden rounded-2xl glass-card h-full flex flex-col"
                   >
                     <div className="relative h-60 overflow-hidden bg-slate-100 dark:bg-slate-950">
                       <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
@@ -682,6 +696,7 @@ const Homepage = () => {
                         <img
                           src={`/images/projects/${project.image}`}
                           alt={project.title}
+                          loading="lazy"
                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                         />
                       )}
@@ -841,7 +856,7 @@ const Homepage = () => {
         </section>
         {/* Section Contact End */}
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -12,7 +12,7 @@
     "Bulk Export: Ekspor rekapitulasi nilai massal per sesi ke Excel (Maatwebsite Excel), cetak hasil skor format PDF (DOMPDF), dan paket arsip ZIP."
   ],
   "impact": "Mendigitalisasi pelaksanaan simulasi TOEIC bagi ratusan mahasiswa PNB per sesi, meniadakan biaya penggandaan kertas ujian, memangkas waktu rekapitulasi nilai dari berhari-hari menjadi hitungan detik, serta meningkatkan kesiapan mahasiswa menghadapi tes sertifikasi internasional.",
-  "image": "toeic.png",
+  "image": "toeic.webp",
   "tech": [
     "Laravel 11",
     "PHP 8.2",
